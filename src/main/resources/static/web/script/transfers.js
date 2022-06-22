@@ -19,7 +19,7 @@ Vue.createApp({
 
 
   created() {
-    axios.get(`http://localhost:8080/api/clients/current`)
+    axios.get(`/api/clients/current`)
       .then(data => {
         this.dataClient = data.data
         this.contenido = data.data.accounts
@@ -66,7 +66,7 @@ Vue.createApp({
 
               })
             } else {
-              axios.post('http://localhost:8080/api/transaction', `amount=${this.amount}&originAccount=${this.originAccount}&destinationAccount=${this.destinationAccountNumber}&description=${this.description}`,
+              axios.post('/api/transaction', `amount=${this.amount}&originAccount=${this.originAccount}&destinationAccount=${this.destinationAccountNumber}&description=${this.description}`,
                 { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response =>
                   Swal.fire(

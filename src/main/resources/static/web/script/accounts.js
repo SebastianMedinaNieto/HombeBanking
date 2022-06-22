@@ -17,7 +17,7 @@ Vue.createApp({
 
 
   created() {
-    axios.get(`http://localhost:8080/api/clients/current`)
+    axios.get(`/api/clients/current`)
       .then(data => {
         this.dataClient = data.data
         this.accounts = data.data.accounts
@@ -58,7 +58,7 @@ Vue.createApp({
           }else{
             this.id = account.id
 
-            axios.patch("http://localhost:8080/api/clients/current/accounts", `id=${this.id}`)
+            axios.patch("/api/clients/current/accounts", `id=${this.id}`)
               .then(result => Swal.fire('Deleted!', '', 'success'))
               .then(result => window.location.href = '/web/accounts.html')
           }
@@ -91,7 +91,7 @@ Vue.createApp({
 
           if (result.isConfirmed) {
 
-            axios.post('http://localhost:8080/api/clients/current/accounts',`accountType=${this.tipoDeCuenta}`,
+            axios.post('/api/clients/current/accounts',`accountType=${this.tipoDeCuenta}`,
               { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
               .then(response => {
                 Swal.fire('Created!', '', 'success')

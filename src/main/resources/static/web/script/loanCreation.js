@@ -52,7 +52,7 @@ Vue.createApp({
                             text: 'Amount must be more than 0',
                         })
                     } else{
-                        axios.post('http://localhost:8080/api/admin/loan',`maxAmount=${this.amount}&name=${this.name}&interest=${this.taxes}&payments=${this.payments}`)
+                        axios.post('/api/admin/loan',`maxAmount=${this.amount}&name=${this.name}&interest=${this.taxes}&payments=${this.payments}`)
                         .then(response =>  Swal.fire({
                             icon: 'success',
                             title: 'Loan created',

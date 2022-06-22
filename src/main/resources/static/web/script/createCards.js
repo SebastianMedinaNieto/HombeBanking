@@ -11,7 +11,7 @@ Vue.createApp({
 
   created() {
 
-    axios.get(`http://localhost:8080/api/clients/current`)
+    axios.get(`/api/clients/current`)
       .then(data => {
         this.dataClient = data.data
         this.cards = data.data.cards
@@ -56,7 +56,7 @@ Vue.createApp({
         }).then((result) => {
           if (result.isConfirmed) {
 
-            axios.post('http://localhost:8080/api/clients/current/cards', `cardColor=${this.cardColor}&cardType=${this.cardType}`,
+            axios.post('/api/clients/current/cards', `cardColor=${this.cardColor}&cardType=${this.cardType}`,
             { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
               .then(response => {
                 Swal.fire('Created!', '', 'success')

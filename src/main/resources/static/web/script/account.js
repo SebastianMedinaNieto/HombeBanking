@@ -11,7 +11,7 @@ Vue.createApp({
     created() {
         const URLPARAMS = new URLSearchParams(window.location.search)
         const MYPARAM = URLPARAMS.get(`id`)
-        axios.get("http://localhost:8080/api/clients/current/accounts/" + MYPARAM)
+        axios.get("/api/clients/current/accounts/" + MYPARAM)
 
             .then(result => {
                 this.transaccionesTotales = result.data.transactions

@@ -10,7 +10,7 @@ Vue.createApp({
         }
     },
     created() {
-        axios.get(`http://localhost:8080/api/clients/current`)
+        axios.get(`/api/clients/current`)
             .then(result => {
                 this.tarjetas = result.data.cards
                 this.tarjetasDebito = this.tarjetas.filter(tarjeta => tarjeta.cardType == "DEBIT")
@@ -33,7 +33,7 @@ Vue.createApp({
               }).then((result) => {
             
                 if (result.isConfirmed) {
-                    axios.patch("http://localhost:8080/api/clients/current/cards",`id=${this.tarjetaId}`)
+                    axios.patch("/api/clients/current/cards",`id=${this.tarjetaId}`)
                     .then(result =>{ Swal.fire('Deleted!', '', 'success')
                     .then(result => window.location.href = "/web/cards.html")})
                    

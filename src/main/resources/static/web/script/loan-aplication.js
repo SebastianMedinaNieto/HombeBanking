@@ -20,12 +20,12 @@ Vue.createApp({
     },
     created() {
 
-        axios.get(`http://localhost:8080/api/clients/current`)
+        axios.get(`/api/clients/current`)
             .then(result => {
                 this.dataClient = result.data
 
 
-                axios.get(`http://localhost:8080/api/loans`)
+                axios.get(`/api/loans`)
                     .then(data => {
                         this.loans = data.data
                         this.accounts = this.dataClient.accounts
