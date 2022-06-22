@@ -81,7 +81,7 @@ Vue.createApp({
                             number: this.accountNumber
                         };
 
-                        axios.post('http://localhost:8080/api/loan', this.loanAplicationDTO)
+                        axios.post('/api/loan', this.loanAplicationDTO)
                             .then(respuesta => {
                                 Swal.fire(
                                     'Loan accepted',
