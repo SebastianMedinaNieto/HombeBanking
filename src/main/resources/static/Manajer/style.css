@@ -1,0 +1,27 @@
+body{
+background-color: #F5F5F5;
+
+}
+
+@media(max-width: 1000px){
+    main {
+        gap:50px;
+        flex-direction: column !important;
+    }
+    .col-6 {
+        width:90% !important;
+    }
+    .flex-row {
+            flex-direction: column !important;
+    }
+    #datos{
+        width:90%!important;
+    }
+
+    h3{
+    text-align: center;
+    margin-top: 3rem;
+    margin-bot: 2rem;
+    }
+
+}

@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.image-text{
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: aliceblue;
+    margin-right: 2rem;
+}
+
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+.image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.Logout{
+    color: aliceblue !important;
+
+}
+
+.logoOut{
+    color: aliceblue !important;
+    margin-top: 0.9rem !important;
+    margin-left: 1rem;
+
+}
+
+body{
+    background-image: url(./gatobanco.jpg);
+
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+}
+main{
+    min-height: 65vh;
+}
+
+
+
+
+
+#formContainer{
+    background-image: url("./cat-back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-weight: 900;
+    text-align: center;
+}
+
+#logoForm{
+    background-color: #234567;
+    background-position: -5%;
+    color: white;
+}
+#gatoLogo>img{
+    width: 250px;
+}
+.vista{
+
+    display: none;
+}
+
+
+
+
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+   }
+   
+   .cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #b1dae7;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+   }
+   
+   .cta span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #234567;
+   }
+   
+   .cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #234567;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+   }
+   
+   .cta:hover:before {
+    width: 100%;
+    background: #b1dae7;
+   }
+   
+   .cta:hover svg {
+    transform: translateX(0);
+   }
+   
+   .cta:active {
+    transform: scale(0.95);
+   }
+
+
+
+
+#piePagina {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+footer {
+    width: 80% !important;
+
+}
+
+
+
+
+
+#loader{
+    width: 100%;
+    background: #E4DCDB url("./loaderCat.gif") no-repeat center center;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+}

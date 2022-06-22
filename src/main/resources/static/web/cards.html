@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Orbitron|Roboto+Condensed:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./style/cards.css">
+
+</head>
+<body>
+
+    <div id="loader"></div>
+<div id="app">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container">
+        <div class="image-text">
+                <span class="image">
+                    <img src="./style/gatito(1).png" alt="gatico">
+                </span>
+
+            <div class="text logo-text">
+                <span class="name">Banco</span>
+                <span class="profession">Michifus</span>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav me-auto">
+                <a class="nav-link " aria-current="page" href="./accounts.html">Accounts</a>
+                <a class="nav-link active border-bottom" aria-current="page" href="#">Cards</a>
+                <a class="nav-link" aria-current="page" href="./transfers.html">Transfers</a>
+                <a  class="nav-link" aria-current="page" href="./loan-aplication.html">Loans</a>
+            </div>
+            <form class="d-flex">
+                <div class="rounded-pill bg-light d-flex">
+                    <input type="text" class="form-control rounded-pill border-0 outiline-0 bg-transparent shadow-none py-1" placeholder="Search" aria-label="Search ...">
+                    <span class="pe-2 pt-1 pb-1"> <i class="fas fa-search text-muted"></i> </span>
+                </div>
+            </form>
+            <a class="d-flex" href="#" v-on:click="logOut()">
+                <i class="fa-solid fa-arrow-right-from-bracket logoOut"></i>
+                <span class="nav-link Logout">Log Out</span>
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+<main  >
+  
+<div class="w-100" id="contenedorTarjetas">
+
+    <div id="contenedorTarjetasDebito">
+
+  <h2 class="text-center">Your Debit Cards</h2>
+
+
+     
+  <div class="center" v-for="tarjeta in tarjetasDebito">
+    <div class="card">
+      <div class="flip">
+        <div class="front"
+             v-bind:class="{gold: tarjeta.cardColor === `GOLD`, silver: tarjeta.cardColor === `SILVER`, titanium: tarjeta.cardColor === `TITANIUM`}"
+        >
+          <div class="top-part"></div>
+          <svg class="logo" width="20" height="20" >
+            <path d="M3.2 0l5.4 5.6L14.3 0l3.2 3v9L13 16.2V7.8l-4.4 4.1L4.5 8v8.2L0 12V3l3.2-3z" fill="white"></path>
+          </svg>
+          <div class="investor">{{tarjeta.cardType}} {{tarjeta.cardColor}}</div>
+          <div class="chip">
+            <div class="chip-line"></div>
+            <div class="chip-line"></div>
+            <div class="chip-line"></div>
+            <div class="chip-line"></div>
+            <div class="chip-main-square"></div>
+          </div>
+          <svg class="wave" viewBox="0 3.71 26.959 38.787" width="26" height="32" fill="white">
+            <path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path>
+            <path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path>
+            <path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path>
+          </svg>
+          <div class="card-number"> 
+            <div class="section">{{tarjeta.number}}</div>
+        
+          </div>
+
+          <div class="valid-thru">valid thru
+            <span class="date"> {{tarjeta.thruDate.slice(2,7)}}</span>
+          </div>
+          <div class="card-holder">card holder
+            <span class="name">{{tarjeta.cardHolder}}</span>
+          </div>
+          <div class="master">
+            <div class="circle master-red"></div>
+            <div class="circle master-yellow"></div>
+            <div class="mastercard">mastercard.</div>
+          </div>
+        </div>
+
+        <div class="back">
+
+        
+          <div class="customer-service d-flex justify-content-between">Michifus Bank +44 59 2374 0084
+            <button class="btn botonDelete" v-on:click="deleteCard(tarjeta)" >Delete
+            </button>
+          </div>
+          <div class="black-strip"></div>
+          <div class="signature">Authorized Signature</div>
+          <div class="ccv">
+            <div>{{tarjeta.cvv}}</div>
+          </div>
+          <div class="card-number"> 
+            <div class="section">{{tarjeta.number}}</div>
+      
+          </div>
+          <label>{{tarjeta.cardColor}}</label>
+
+          <div class="terms">
+            <p>This card is property of Michifus Bank, Argentina. Misuse is criminal offence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+</div>
+ 
+
+<div id="contenedorTarjetasCredito">
+
+  <h2 class="text-center">Your Credit Cards</h2>
+
+    <div class="center" v-for="tarjeta in tarjetasCredito">
+        <div class="card">
+            <div class="flip">
+                <div class="front"
+                     v-bind:class="{gold: tarjeta.cardColor === `GOLD`, silver: tarjeta.cardColor === `SILVER`, titanium: tarjeta.cardColor === `TITANIUM`}"
+                >
+                    <div class="top-part"></div>
+                    <svg class="logo" width="20" height="20" >
+                        <path d="M3.2 0l5.4 5.6L14.3 0l3.2 3v9L13 16.2V7.8l-4.4 4.1L4.5 8v8.2L0 12V3l3.2-3z" fill="white"></path>
+                    </svg>
+                    <div class="investor">{{tarjeta.cardType}} {{tarjeta.cardColor}}</div>
+                    <div class="chip">
+                        <div class="chip-line"></div>
+                        <div class="chip-line"></div>
+                        <div class="chip-line"></div>
+                        <div class="chip-line"></div>
+                        <div class="chip-main-square"></div>
+                    </div>
+                    <svg class="wave" viewBox="0 3.71 26.959 38.787" width="26" height="32" fill="white">
+                        <path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path>
+                        <path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path>
+                        <path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path>
+                    </svg>
+                    <div class="card-number">
+                        <div class="section">{{tarjeta.number}}</div>
+
+                    </div>
+
+                    <div class="valid-thru">valid thru
+                        <span class="date"> {{tarjeta.thruDate.slice(2,7)}}</span>
+                    </div>
+                    <div class="card-holder">card holder
+                        <span class="name">{{tarjeta.cardHolder}}</span>
+                    </div>
+                    <div class="master">
+                        <div class="circle master-red"></div>
+                        <div class="circle master-yellow"></div>
+                        <div class="mastercard">mastercard.</div>
+                    </div>
+                </div>
+
+                <div class="back"
+
+                >
+                    <div class="customer-service d-flex justify-content-between">Michifus Bank +44 59 2374 0084 
+                        <button class="btn botonDelete" v-on:click="deleteCard(tarjeta)" >Delete
+                        </button>
+                    </div>
+                    <div class="black-strip"></div>
+                    <div class="signature">Authorized Signature</div>
+                    <div class="ccv">
+                        <div>{{tarjeta.cvv}}</div>
+                    </div>
+                    <div class="card-number">
+                        <div class="section">{{tarjeta.number}}</div>
+
+                    </div>
+                    <label>{{tarjeta.cardColor}}</label>
+
+                    <div class="terms">
+                        <p>This card is property of Michifus Bank, Argentina. Misuse is criminal offence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</div>
+
+<div  class="mt-4" id="if">
+    <div id="contenedorCajitasIf">
+    <h3 class="text-center">Aply for our Cards and get Disccounts!</h3>
+   
+  <button class="cta" >
+      <a href="./create-cards.html">
+      <span  >Information</span>
+      <svg viewBox="0 0 13 10" height="10px" width="15px">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </a>
+  </button>
+
+</div>
+</div>
+
+
+</main>
+
+
+
+
+
+
+
+<div id="piePagina" class="mt-3">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top text-light">
+        <div class="row">
+            <div class="col-12 col-md text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"></svg>
+                    <h5 class="text-light">Sebastian Medina</h5>
+                    <small class="d-block mb-3">© 2022</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5 class="text-light">Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Cool stuff</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Random feature</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Team feature</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Stuff for developers</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Another one</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Last time</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5 class="text-light">Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Resource</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Resource name</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Another resource</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5 class="text-light">About</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Team</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Locations</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Privacy</a></li>
+                    <li class="mb-1"><a class="text-light text-decoration-none" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
+<script src="https://kit.fontawesome.com/0b66f28872.js" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="./script/cards.js"></script>
+
+
+<script>
+    var loader = document.getElementById("loader");
+
+    window.addEventListener("load", function(){
+
+        setTimeout(() =>{
+        loader.style.display = "none";  
+        }, 750);
+
+    })
+
+</script>
+
+</body>
+</html>
